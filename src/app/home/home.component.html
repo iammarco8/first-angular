@@ -1,0 +1,49 @@
+<!-- <h1>My name is {{myname}}</h1>
+<p> welcome to my home page!</p>
+<input type="button" value="a button">
+<input type="button" value="test" [disabled]="buttonState">
+<input type="text" [value]=myname>
+<input type="text" [(ngModel)]="myname">
+<br><br>
+<label for="num1">num1</label>
+<input type="number" [(ngModel)] = "num1">
+<br><br>
+<label for="num2">num2</label>
+<input type="number" [(ngModel)] = "num2">
+<br><br>
+<h2>result:{{sum}}</h2> -->
+<!-- <h2>result:{{num2 + num1}}</h2> -->
+<br><br>
+<select name="oporation" [(ngModel)]="selectedOporator" (ngModelChange)="calc()">
+    <option 
+    *ngFor="let oporation of oporations"
+    [value]="oporation.value"
+    >
+    {{oporation.label}}
+    </option>
+</select>
+
+<hr>
+<h3>You Selected {{selectedOporator}} </h3>
+<!-- <div ng-If="oporations.value = 'CIRCLE';>
+    <input type="text" id="num1" [(ngModel)]="num1" (keyup)="calc()">
+    <ng-template #elseBlock>
+        <input type="text" id="num2" [(ngModel)]="num2" (keyup)="calc()">
+    </ng-template>-->
+
+<ng-template [ngIf]="selectedOporator != 'CIRCLE'; else elseBlock ">
+    <div>
+        <input type="text" id="num1" [(ngModel)]="num1" (keyup)="calc()">
+        <input type="text" id="num2" [(ngModel)]="num2" (keyup)="calc()">
+    </div>
+<ng-template #elseBlock>
+
+   <input type="text" id="num1" [(ngModel)]="num1" (keyup)="calc()">
+</ng-template> 
+
+<div *ngIf="selectedOporator">
+        <img *ngIf="selectedOporator=== 'CIRCLE'" src="/assets/circle.png" alt="Circle" width="240" height="200">
+        <img *ngIf="selectedOporator=== 'RECTANGLE'" src="/assets/rectangle.png" alt="Rectangle" width="200" height="200">
+      </div>
+
+<h3>Result:{{sum}} </h3>
